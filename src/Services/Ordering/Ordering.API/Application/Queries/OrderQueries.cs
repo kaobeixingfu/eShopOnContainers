@@ -6,8 +6,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class OrderQueries
-        : IOrderQueries
+    public class OrderQueries : IOrderQueries
     {
         private string _connectionString = string.Empty;
 

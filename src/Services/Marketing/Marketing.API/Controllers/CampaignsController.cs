@@ -42,8 +42,7 @@ namespace Microsoft.eShopOnContainers.Services.Marketing.API.Controllers
         [ProducesResponseType(typeof(List<CampaignDTO>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetAllCampaigns()
         {
-            var campaignList = await _context.Campaigns
-                .ToListAsync();
+            var campaignList = await _context.Campaigns.ToListAsync();
 
             if (campaignList is null)
             {
@@ -188,8 +187,7 @@ namespace Microsoft.eShopOnContainers.Services.Marketing.API.Controllers
         {
             var campaignDtoList = new List<CampaignDTO>();
 
-            campaignList.ForEach(campaign => campaignDtoList
-                .Add(MapCampaignModelToDto(campaign)));
+            campaignList.ForEach(campaign => campaignDtoList.Add(MapCampaignModelToDto(campaign)));
 
             return campaignDtoList;
         }

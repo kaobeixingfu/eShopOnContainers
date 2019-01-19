@@ -10,8 +10,6 @@ namespace Microsoft.eShopOnContainers.BuildingBlocks.EventBus
 {
     public partial class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptionsManager
     {
-
-
         private readonly Dictionary<string, List<SubscriptionInfo>> _handlers;
         private readonly List<Type> _eventTypes;
 
@@ -50,8 +48,7 @@ namespace Microsoft.eShopOnContainers.BuildingBlocks.EventBus
 
             if (_handlers[eventName].Any(s => s.HandlerType == handlerType))
             {
-                throw new ArgumentException(
-                    $"Handler Type {handlerType.Name} already registered for '{eventName}'", nameof(handlerType));
+                throw new ArgumentException($"Handler Type {handlerType.Name} already registered for '{eventName}'", nameof(handlerType));
             }
 
             if (isDynamic)

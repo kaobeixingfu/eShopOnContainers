@@ -72,8 +72,7 @@ namespace Microsoft.eShopOnContainers.Services.Ordering.Domain.AggregatesModel.O
         // in order to maintain consistency between the whole Aggregate. 
         public void AddOrderItem(int productId, string productName, decimal unitPrice, decimal discount, string pictureUrl, int units = 1)
         {
-            var existingOrderForProduct = _orderItems.Where(o => o.ProductId == productId)
-                .SingleOrDefault();
+            var existingOrderForProduct = _orderItems.Where(o => o.ProductId == productId).SingleOrDefault();
 
             if (existingOrderForProduct != null)
             {

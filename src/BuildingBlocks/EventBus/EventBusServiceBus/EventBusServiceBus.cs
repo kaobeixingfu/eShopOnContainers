@@ -22,7 +22,7 @@
         private readonly string AUTOFAC_SCOPE_NAME = "eshop_event_bus";
         private const string INTEGRATION_EVENT_SUFIX = "IntegrationEvent";
 
-        public EventBusServiceBus(IServiceBusPersisterConnection serviceBusPersisterConnection, 
+        public EventBusServiceBus(IServiceBusPersisterConnection serviceBusPersisterConnection,
             ILogger<EventBusServiceBus> logger, IEventBusSubscriptionsManager subsManager, string subscriptionClientName,
             ILifetimeScope autofac)
         {
@@ -30,8 +30,7 @@
             _logger = logger;
             _subsManager = subsManager ?? new InMemoryEventBusSubscriptionsManager();
 
-            _subscriptionClient = new SubscriptionClient(serviceBusPersisterConnection.ServiceBusConnectionStringBuilder, 
-                subscriptionClientName);
+            _subscriptionClient = new SubscriptionClient(serviceBusPersisterConnection.ServiceBusConnectionStringBuilder, subscriptionClientName);
             _autofac = autofac;
 
             RemoveDefaultRule();

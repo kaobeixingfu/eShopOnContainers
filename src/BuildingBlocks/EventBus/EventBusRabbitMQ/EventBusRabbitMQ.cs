@@ -84,12 +84,9 @@ namespace Microsoft.eShopOnContainers.BuildingBlocks.EventBusRabbitMQ
                 var eventName = @event.GetType()
                     .Name;
 
-                channel.ExchangeDeclare(exchange: BROKER_NAME,
-                                    type: "direct");
-
+                channel.ExchangeDeclare(exchange: BROKER_NAME, type: "direct");
                 var message = JsonConvert.SerializeObject(@event);
                 var body = Encoding.UTF8.GetBytes(message);
-
                 policy.Execute(() =>
                 {
                     var properties = channel.CreateBasicProperties();

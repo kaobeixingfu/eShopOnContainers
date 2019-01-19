@@ -61,8 +61,7 @@ namespace Microsoft.eShopOnContainers.Services.Basket.API.Controllers
             var userId = _identitySvc.GetUserIdentity();
             
 
-            basketCheckout.RequestId = (Guid.TryParse(requestId, out Guid guid) && guid != Guid.Empty) ?
-                guid : basketCheckout.RequestId;
+            basketCheckout.RequestId = (Guid.TryParse(requestId, out Guid guid) && guid != Guid.Empty) ?guid : basketCheckout.RequestId;
 
             var basket = await _repository.GetBasketAsync(userId);
 

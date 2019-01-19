@@ -231,8 +231,7 @@ namespace Microsoft.eShopOnContainers.Services.Catalog.API
 
         public static IServiceCollection AddIntegrationServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTransient<Func<DbConnection, IIntegrationEventLogService>>(
-               sp => (DbConnection c) => new IntegrationEventLogService(c));
+            services.AddTransient<Func<DbConnection, IIntegrationEventLogService>>(sp => (DbConnection c) => new IntegrationEventLogService(c));
 
             services.AddTransient<ICatalogIntegrationEventService, CatalogIntegrationEventService>();
 
@@ -296,8 +295,7 @@ namespace Microsoft.eShopOnContainers.Services.Catalog.API
                     var logger = sp.GetRequiredService<ILogger<EventBusServiceBus>>();
                     var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
 
-                    return new EventBusServiceBus(serviceBusPersisterConnection, logger,
-                        eventBusSubcriptionsManager, subscriptionClientName, iLifetimeScope);
+                    return new EventBusServiceBus(serviceBusPersisterConnection, logger,eventBusSubcriptionsManager, subscriptionClientName, iLifetimeScope);
                 });
 
             }
